@@ -38,7 +38,7 @@ resource "aws_security_group" "server" {
 resource "aws_instance" "server" {
   instance_type               = var.instance_type
   ami                         = "ami-0e698fee1e6224f1a"
-  subnet_id                   = var.subnet_id
+  subnet_id                   = var.subnet.id
   vpc_security_group_ids      = [aws_security_group.server.id]
   key_name                    = aws_key_pair.default.id
   associate_public_ip_address = length(var.ssh_whitelist) > 0
@@ -62,7 +62,7 @@ resource "aws_instance" "server" {
 
 resource "aws_ebs_volume" "storage" {
   type              = "gp2"
-  availability_zone = data.aws_availability_zones.available[locals.server_subnet_index]
+  availability_zone = var.subnet.availability_zone_id
   size              = 10
   iops              = 100
   tags = {

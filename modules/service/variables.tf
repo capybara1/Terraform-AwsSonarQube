@@ -10,8 +10,8 @@ variable "vpc_cidr_block" {
   type = string
 }
 
-variable "subnet_id" {
-  type = string
+variable "subnet" {
+  type = object({id = string, availability_zone_id = string})
 }
 
 variable "service_domain" {
