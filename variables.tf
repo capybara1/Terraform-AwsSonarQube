@@ -19,7 +19,7 @@ variable "prefix" {
 variable "ssh_whitelist" {
   description = "Whitelist of cidr blocks for access to the server"
   type        = set(string)
-  default     = []
+  default     = ["0.0.0.0/0"] # Access required for SSH
 }
 
 variable "vpc_cidr_block" {

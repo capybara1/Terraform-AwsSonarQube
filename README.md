@@ -27,7 +27,7 @@ public_key_path = "~/.ssh/id_rsa.pub"
 EOT
 ```
 
-_Optional_: add decrypted ssh key to agent
+Add ssh key to agent
 
 ```
 eval $(ssh-agent -s)

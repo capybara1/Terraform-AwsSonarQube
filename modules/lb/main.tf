@@ -61,7 +61,7 @@ resource "aws_lb_target_group" "http" {
 resource "aws_lb_listener" "HTTP" {
   load_balancer_arn = aws_lb.default.arn
   port              = "80"
-  protocol          = "TCP"
+  protocol          = "HTTP"
   default_action {
     type = "redirect"
 

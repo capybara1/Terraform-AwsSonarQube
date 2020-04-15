@@ -10,7 +10,7 @@ locals {
 
 
 module "vpc" {
-  source = "github.com/capybara1/Terraform-AwsBasicVpc?ref=v2.0.0"
+  source = "github.com/capybara1/Terraform-AwsBasicVpc?ref=v2.1.0"
 
   vpc_cidr_block            = var.vpc_cidr_block
   prefix                    = var.prefix

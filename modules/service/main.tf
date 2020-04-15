@@ -49,12 +49,13 @@ resource "aws_instance" "server" {
   connection {
     type    = "ssh"
     host    = self.public_ip
-    user    = "ubuntu"
+    user    = "bitnami"
     timeout = "2m"
   }
 
   provisioner "remote-exec" {
     inline = [
+      "while grep -q -e 'The machine is being initialized' ./bitnami_credentials; do sleep 0.1; done",
       "cat ./bitnami_credentials"
     ]
   }
@@ -62,7 +63,7 @@ resource "aws_instance" "server" {
 
 resource "aws_ebs_volume" "storage" {
   type              = "gp2"
-  availability_zone = var.subnet.availability_zone_id
+  availability_zone = var.subnet.availability_zone_name
   size              = 10
   iops              = 100
   tags = {
