@@ -11,7 +11,7 @@ resource "aws_security_group" "server" {
   dynamic "ingress" {
     for_each = [
       { port = 22, cidr_blocks = var.ssh_whitelist },
-      { port = 80, cidr_blocks = var. }
+      { port = 80, cidr_blocks = [var.vpc_cidr_block] }
     ]
     iterator = it
     content {
@@ -42,7 +42,6 @@ resource "aws_instance" "server" {
   vpc_security_group_ids      = [aws_security_group.server.id]
   key_name                    = aws_key_pair.default.id
   associate_public_ip_address = length(var.ssh_whitelist) > 0
-  user_data                   = data.template_file.setup.rendered
   tags = {
     Name = var.prefix
   }
