@@ -1,52 +1,55 @@
 variable "aws_profile" {
   description = "The AWS CLI profile."
+  type        = string
   default     = "default"
 }
 
 variable "aws_region" {
   description = "The AWS region."
+  type        = string
   default     = "eu-central-1"
 }
 
 variable "prefix" {
   description = "The common prefix for names."
-  default     = "Jitsi"
+  type        = string
+  default     = "SonarQube"
+}
+
+variable "ssh_whitelist" {
+  description = "Whitelist of cidr blocks for access to the server"
+  type        = set(string)
+  default     = []
 }
 
 variable "vpc_cidr_block" {
   description = "The VPC network."
-  default = "10.0.0.0/16"
+  type        = string
+  default     = "10.0.0.0/24"
 }
 
-variable "public_subnet_count" {
-  description = "The number of public subnets."
-  default = 2
+variable "service_domain" {
+  description = "The DNS domain resolving to the server ip."
+  type        = string
 }
 
-variable "private_subnet_count" {
-  description = "The number of private subnets."
-  default = 2
-}
-
-variable "domain" {
-  description = "The DNS domain."
+variable "cert_domain" {
+  description = "The DNS domain of the certificate in AWS Certificate Manager."
+  type        = string
 }
 
 variable "zone" {
-  description = "The DNS domain."
-  default     = "${var.domain}."
-}
-
-variable "key_name" {
-  description = "The name of the RSA key pair in AWS."
-  default     = "SonarQube-Keys"
+  description = "The name of the DNS zone in AWS Route53."
+  type        = string
 }
 
 variable "public_key_path" {
   description = "Path to the RSA public key."
+  type        = string
 }
 
 variable "instance_type" {
   description = "AWS EC2 instance type."
-  default = "t3a.medium"
+  type        = string
+  default     = "t3a.medium"
 }

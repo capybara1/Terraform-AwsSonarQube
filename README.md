@@ -4,10 +4,19 @@ Terraform project for setting up SonarQube on AWS.
 
 ## Prerequisites
 
-- Registered DNS domain on AWS Route53 is available
-- An RSA key pair for SSH connection is available
+- A DNS zone, managed by AWS Route53, is available
+- A TLS certificate, managed by AWS Certificate Manager, is available
+- A RSA key pair for SSH connection is available
 
 ## Prepare
+
+Initialize Terraform
+
+```sh
+terraform init
+```
+
+Configure
 
 ```sh
 cat <<EOT > terraform.tfvars
@@ -18,6 +27,8 @@ public_key_path = "~/.ssh/id_rsa.pub"
 EOT
 ```
 
+_Optional_: add decrypted ssh key to agent
+
 ```
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
@@ -26,7 +37,6 @@ ssh-add ~/.ssh/id_rsa
 ## Apply
 
 ```sh
-terraform init
 terraform apply
 ```
 
