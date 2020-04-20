@@ -42,6 +42,12 @@ resource "aws_instance" "server" {
   vpc_security_group_ids      = [aws_security_group.server.id]
   key_name                    = aws_key_pair.default.id
   associate_public_ip_address = length(var.ssh_whitelist) > 0
+
+  root_block_device {
+    volume_size = var.instance_root_volume_size
+    volume_type = "gp2"
+  }
+
   tags = {
     Name = var.prefix
   }

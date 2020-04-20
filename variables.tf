@@ -53,3 +53,9 @@ variable "instance_type" {
   type        = string
   default     = "t3a.medium"
 }
+
+variable "instance_root_volume_size" {
+  description = "AWS EC2 instance root volume size."
+  type        = number
+  default     = 8
+}
