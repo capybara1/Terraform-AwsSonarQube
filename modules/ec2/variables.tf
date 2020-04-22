@@ -11,7 +11,7 @@ variable "vpc_cidr_block" {
 }
 
 variable "subnet" {
-  type = object({id = string, availability_zone_id = string, availability_zone_name = string})
+  type = object({ id = string, availability_zone_id = string, availability_zone_name = string })
 }
 
 variable "service_domain" {
