@@ -1,3 +1,5 @@
+![CI](https://github.com/capybara1/Terraform-AwsSonarQube/workflows/CI/badge.svg)
+
 # SonarQube on AWS
 
 Terraform project for setting up SonarQube on AWS.
