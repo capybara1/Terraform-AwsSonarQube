@@ -42,3 +42,11 @@ module "lb" {
   cert_domain    = var.cert_domain
   zone           = var.zone
 }
+
+module "ses" {
+  source = "github.com/capybara1/Terraform-AwsSesSmtp?ref=v1.0.0"
+
+  prefix = var.prefix
+  domain = var.service_domain
+  zone   = var.zone
+}

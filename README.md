@@ -42,6 +42,18 @@ ssh-add ~/.ssh/id_rsa
 terraform apply
 ```
 
+## Configure
+
+SMTP Settings
+
+| Setting           | Value        |
+|-------------------|--------------|
+| SMTP host         | _see output_ |
+| Secure connection | starttls     |
+| Port              | 587          |
+| SMTP username     | _see output_ |
+| SMTP password     | _see output_ |
+
 ## Resources
 
 - [Bitnami SonarQube Stack for AWS Cloud](https://docs.bitnami.com/aws/apps/sonarqube/)
